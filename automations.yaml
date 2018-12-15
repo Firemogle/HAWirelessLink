@@ -1,1 +1,16 @@
-[]
+- id: xmas_toggle
+  alias: xmas_toggle
+  trigger:
+  - platform: mqtt
+    topic: zwave/cafetera/set
+  - platform: state
+    entity_id: switch.switch_2
+    to: 'on'    
+  action:
+  - data:
+      entity_id: switch.main_bath_fan
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        switch.turn_on
+      {% else %} 
+        switch.turn_off      
