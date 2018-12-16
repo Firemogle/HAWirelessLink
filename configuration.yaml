@@ -79,16 +79,8 @@ mqtt:
   tls_version: '1.2'
   discovery: false
 
-mqtt_eventstream:
-  publish_topic: slaves/wirelesslink
-  subscribe_topic: master/topic
-  ignore_event:
-    - call_service
-    - component_loaded
-    - platform_discovered
-    - service_executed
-    - service_registered
-    - time_changed
+mqtt_statestream:
+  base_topic: HAwirelesslink
 
 group: !include groups.yaml
 automation: !include automations.yaml
