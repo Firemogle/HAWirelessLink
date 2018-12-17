@@ -80,7 +80,7 @@ mqtt:
   discovery: false
 
 mqtt_statestream:
-  base_topic: HAwirelesslink
+  base_topic: hawirelesslink
   publish_attributes: true
   publish_timestamps: true
   include:
