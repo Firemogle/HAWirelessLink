@@ -81,8 +81,12 @@ mqtt:
 
 mqtt_statestream:
   base_topic: HAwirelesslink
-  publish_attributes: false
-  publish_timestamps: false
+  publish_attributes: true
+  publish_timestamps: true
+  include:
+    domains:
+      - switch
+      - light
 
 group: !include groups.yaml
 automation: !include automations.yaml
