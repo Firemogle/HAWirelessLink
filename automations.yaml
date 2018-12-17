@@ -1,5 +1,5 @@
-- id: xmas_toggle
-  alias: xmas_toggle
+- id: xmaslights
+  alias: xmaslights
   trigger:
   - platform: mqtt
     topic: "/HAwirelesslink/return/switch/xmaslights/state"
