@@ -29,11 +29,6 @@ updater:
 # View all events in a logbook
 logbook:
 
-logger:
-  default: warning
-  logs:
-    homeassistant.components.mqtt: debug
-
 # Cloud
 cloud:
 
