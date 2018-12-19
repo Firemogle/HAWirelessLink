@@ -13,18 +13,33 @@
         switch.turn_off      
       {% endif %}
 
-- id: linear_pd300z2_plugin_dimmer_module_level
-  alias: linear_pd300z2_plugin_dimmer_module_level
+- id: linear_pd300z2_plugin_dimmer_module_level_brightness
+  alias: linear_pd300z2_plugin_dimmer_module_level_brightness
   trigger:
   - platform: mqtt
     topic: "/HAwirelesslink/return/light/linear_pd300z2_plugin_dimmer_module_level/brightness"
   action:
   - data:
       entity_id: light.linear_pd300z2_plugin_dimmer_module_level
-      brightness: trigger.payload
+      brightness: trigger.payload|float
     service_template: >
-      {% if trigger.payload == 0 %}
+      {% if trigger.payload|float == 0 %}
         light.turn_off
       {% else %} 
         light.turn_on     
+      {% endif %}
+
+- id: linear_pd300z2_plugin_dimmer_module_level
+  alias: linear_pd300z2_plugin_dimmer_module_level
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/linear_pd300z2_plugin_dimmer_module_level/state"
+  action:
+  - data:
+      entity_id: light.linear_pd300z2_plugin_dimmer_module_level
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        light.turn_on
+      {% else %} 
+        light.turn_off      
       {% endif %}
