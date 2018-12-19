@@ -19,9 +19,9 @@
   - platform: mqtt
     topic: "/HAwirelesslink/return/light/linear_pd300z2_plugin_dimmer_module_level/brightness"
   action:
-  - data:
+  - data_template:
       entity_id: light.linear_pd300z2_plugin_dimmer_module_level
-      brightness: trigger.payload.strip()|int
+      brightness: {{ trigger.payload.strip()|int }}
     service_template: >
       {% if trigger.payload.strip()|int == 0 %}
         light.turn_off
