@@ -21,7 +21,7 @@
   action:
   - data:
       entity_id: light.linear_pd300z2_plugin_dimmer_module_level
-      brightness: "{{ trigger.payload }}"
+      brightness: "{{ trigger.payload|int }}"
     service_template: >
       {% if trigger.payload|int == 0 %}
         light.turn_off
