@@ -21,13 +21,13 @@
   action:
   - data_template:
       entity_id: light.linear_pd300z2_plugin_dimmer_module_level
-      brightness: {{ trigger.payload.strip()|int }}
+      brightness: "{{ trigger.payload | int }}"
     service_template: >
-      {% if trigger.payload.strip()|int == 0 %}
+      {% if trigger.payload | int == 0 %}
         light.turn_off
       {% else %} 
         light.turn_on     
-      {% endif %}
+      {% endif %}       
 
 - id: linear_pd300z2_plugin_dimmer_module_level
   alias: linear_pd300z2_plugin_dimmer_module_level
