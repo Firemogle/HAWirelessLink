@@ -3,3 +3,7 @@
     - ping
     - download
     - upload
+
+- platform: fedex
+  username: !secret FEDXUN
+  password: !secret FEDEXUN
