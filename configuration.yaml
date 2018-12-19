@@ -32,6 +32,15 @@ logbook:
 # Cloud
 cloud:
 
+usps:
+    username: !secret USPSUN
+    password: !secret USPSPW
+    driver: phantomjs
+
+camera:
+  - platform: usps
+    scan_interval: 5
+
 zwave:
   usb_path: /dev/ttyUSB0
   device_config: !include zwave_device_config.yaml
