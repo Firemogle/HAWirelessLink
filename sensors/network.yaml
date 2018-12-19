@@ -5,5 +5,5 @@
     - upload
 
 - platform: fedex
-  username: !secret FEDXUN
-  password: !secret FEDEXUN
+  username: !secret FEDEXUN
+  password: !secret FEDEXPW
