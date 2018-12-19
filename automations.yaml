@@ -12,3 +12,19 @@
       {% else %} 
         switch.turn_off      
       {% endif %}
+
+- id: linear_pd300z2_plugin_dimmer_module_level
+  alias: linear_pd300z2_plugin_dimmer_module_level
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/linear_pd300z2_plugin_dimmer_module_level/brightness"
+  action:
+  - data:
+      entity_id: light.linear_pd300z2_plugin_dimmer_module_level
+      brightness: trigger.payload
+    service_template: >
+      {% if trigger.payload == 0 %}
+        light.turn_off
+      {% else %} 
+        light.turn_on     
+      {% endif %}
