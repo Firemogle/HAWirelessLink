@@ -43,3 +43,35 @@
       {% else %} 
         light.turn_off      
       {% endif %}
+
+
+- id: livingroom_entry_brightness
+  alias: livingroom_entry_brightness
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/livingroom_entry/brightness"
+  action:
+  - data_template:
+      entity_id: light.livingroom_entry
+      brightness: "{{ trigger.payload | int }}"
+    service_template: >
+      {% if trigger.payload | int == 0 %}
+        light.turn_off
+      {% else %} 
+        light.turn_on     
+      {% endif %}       
+
+- id: livingroom_entry
+  alias: livingroom_entry
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/livingroom_entry/state"
+  action:
+  - data:
+      entity_id: light.livingroom_entry
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        light.turn_on
+      {% else %} 
+        light.turn_off      
+      {% endif %}
