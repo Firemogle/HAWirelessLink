@@ -39,9 +39,9 @@ zwave:
   usb_path: /dev/ttyUSB0
   device_config: !include zwave_device_config.yaml
 
-zha:
-  usb_path: /dev/ttyUSB1
-  database_path: /config/zigbee.db
+#zha:
+#  usb_path: /dev/ttyUSB1
+#  database_path: /config/zigbee.db
 
 mqtt:
   broker: 192.168.1.243
