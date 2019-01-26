@@ -106,3 +106,18 @@
       {% else %} 
         light.turn_off      
       {% endif %}
+      
+- id: main_bath_fan
+  alias: main_bath_fan
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/switch/main_bath_fan/state"
+  action:
+  - data:
+      entity_id: switch.main_bath_fan
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        switch.turn_on
+      {% else %} 
+        switch.turn_off      
+      {% endif %}
