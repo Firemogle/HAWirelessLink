@@ -49,10 +49,10 @@
   alias: livingroom_entry_brightness
   trigger:
   - platform: mqtt
-    topic: "/HAwirelesslink/return/light/leviton_dz6hd1bz_decora_600w_smart_dimmer_level/brightness"
+    topic: "/HAwirelesslink/return/light/livingroom_entry/brightness"
   action:
   - data_template:
-      entity_id: light.leviton_dz6hd1bz_decora_600w_smart_dimmer_level
+      entity_id: light.livingroom_entry
       brightness: "{{ trigger.payload | int }}"
     service_template: >
       {% if trigger.payload | int == 0 %}
@@ -65,10 +65,10 @@
   alias: livingroom_entry
   trigger:
   - platform: mqtt
-    topic: "/HAwirelesslink/return/light/leviton_dz6hd1bz_decora_600w_smart_dimmer_level/state"
+    topic: "/HAwirelesslink/return/light/livingroom_entry/state"
   action:
   - data:
-      entity_id: light.leviton_dz6hd1bz_decora_600w_smart_dimmer_level
+      entity_id: light.livingroom_entry
     service_template: >
       {% if trigger.payload == 'on' %}
         light.turn_on
