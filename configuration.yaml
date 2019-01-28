@@ -43,10 +43,11 @@ zwave:
 #  usb_path: /dev/ttyUSB1
 #  database_path: /config/zigbee.db
 
+# Enable connection to MQTT server
 mqtt:
   broker: 192.168.1.243
-  protocol: 3.1
-  tls_version: '1.2'
+  username: firemogle
+  password: !secret MQTTPW
   discovery: false
 
 mqtt_statestream:
