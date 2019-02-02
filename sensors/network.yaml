@@ -4,6 +4,6 @@
     - download
     - upload
 
-#- platform: fedex
-#  username: !secret FEDEXUN
-#  password: !secret FEDEXPW
+- platform: fedex
+  username: !secret FEDEXUN
+  password: !secret FEDEXPW
