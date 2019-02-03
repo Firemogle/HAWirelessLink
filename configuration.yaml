@@ -36,6 +36,7 @@ cloud:
 
 
 zwave:
+  network_key: !secret ZWNK
   usb_path: /dev/ttyUSB0
   device_config: !include zwave_device_config.yaml
 
