@@ -1,18 +1,3 @@
-- id: xmaslights
-  alias: xmaslights
-  trigger:
-  - platform: mqtt
-    topic: "/HAwirelesslink/return/switch/xmaslights/state"
-  action:
-  - data:
-      entity_id: switch.xmaslights
-    service_template: >
-      {% if trigger.payload == 'on' %}
-        switch.turn_on
-      {% else %} 
-        switch.turn_off      
-      {% endif %}
-
 - id: linear_pd300z2_plugin_dimmer_module_level_brightness
   alias: linear_pd300z2_plugin_dimmer_module_level_brightness
   trigger:
@@ -115,6 +100,21 @@
   action:
   - data:
       entity_id: switch.main_bath_fan
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        switch.turn_on
+      {% else %} 
+        switch.turn_off      
+      {% endif %}
+
+- id: garage_outlet
+  alias: garage_outlet
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/switch/enerwave_zw15rm_plus_15a_tr_smart_meter_duplex_receptacle_switch/state"
+  action:
+  - data:
+      entity_id: switch.enerwave_zw15rm_plus_15a_tr_smart_meter_duplex_receptacle_switch
     service_template: >
       {% if trigger.payload == 'on' %}
         switch.turn_on
