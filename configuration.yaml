@@ -34,6 +34,7 @@ logbook:
 # Cloud
 cloud:
 
+system_health:
 
 zwave:
   network_key: !secret ZWNK
