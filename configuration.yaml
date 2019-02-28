@@ -36,6 +36,14 @@ cloud:
 
 system_health:
 
+speedtestdotnet:
+  scan_interval:
+    minutes: 30
+  monitored_conditions:
+    - ping
+    - download
+    - upload
+
 zwave:
   network_key: !secret ZWNK
   usb_path: /dev/ttyUSB0
