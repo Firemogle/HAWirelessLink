@@ -122,8 +122,8 @@
         switch.turn_off      
       {% endif %}
 
-- id: main_bath_vent_light_brightness
-  alias: main_bath_vent_light_brightness
+- id: main_bath_vanity_brightness
+  alias: main_bath_vanity_brightness
   trigger:
   - platform: mqtt
     topic: "/HAwirelesslink/return/light/leviton_dz6hd_1bz_decora_600w_smart_dimmer_level/brightness"
