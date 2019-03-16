@@ -1,3 +1,6 @@
-- platform: fedex
-  username: !secret FEDEXUN
-  password: !secret FEDEXPW
+- platform: systemmonitor
+  resources:
+    - type: memory_free
+    - type: processor_use
+    - type: swap_use_percent
+    - type: last_boot
