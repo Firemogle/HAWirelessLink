@@ -6,3 +6,8 @@
     - type: last_boot
     - type: disk_use_percent
       arg: /home
+
+- platform: mqtt
+  name: Bridge state
+  state_topic: "zigbee2mqtt/bridge/state
+  icon: mdi:router-wireless
