@@ -49,9 +49,16 @@ zwave:
   usb_path: /dev/ttyUSB0
   device_config: !include zwave_device_config.yaml
 
-#zha:
-#  usb_path: /dev/ttyUSB1
-#  database_path: /config/zigbee.db
+input_boolean:
+  zigbee_permit_join:
+    name: Allow devices to join
+    initial: off
+    icon: mdi:cellphone-wireless
+    
+timer:
+  zigbee_permit_join:
+    name: Time remaining
+    duration: 600 # Updated this to the number of seconds you wish
 
 # Enable connection to MQTT server
 mqtt:
