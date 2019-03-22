@@ -65,7 +65,13 @@ mqtt:
   broker: 192.168.1.243
   username: firemogle
   password: !secret MQTTPW
-  discovery: false
+  discovery: true
+  birth_message:
+    topic: 'hass/status'
+    payload: 'online'
+  will_message:
+    topic: 'hass/status'
+    payload: 'offline'
 
 mqtt_statestream:
   base_topic: hawirelesslink
