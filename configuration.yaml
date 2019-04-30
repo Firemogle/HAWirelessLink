@@ -48,6 +48,11 @@ zwave:
   network_key: !secret ZWNK
   usb_path: /dev/ttyUSB0
   device_config: !include zwave_device_config.yaml
+  
+# Try ZHA with supposed fixes  
+zha:
+  usb_path: /dev/ttyUSB1
+  database_path: /config/zigbee.db
 
 input_boolean:
   zigbee_permit_join:
