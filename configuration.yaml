@@ -87,6 +87,7 @@ mqtt_statestream:
       - switch
       - light
       - sensor
+      - binary_sensor
       
 group: !include groups.yaml
 automation: !include automations.yaml
