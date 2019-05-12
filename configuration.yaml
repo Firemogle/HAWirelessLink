@@ -91,6 +91,7 @@ mqtt_statestream:
       - light
       - sensor
       - binary_sensor
+      - fan
       
 group: !include groups.yaml
 automation: !include automations.yaml
