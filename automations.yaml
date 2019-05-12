@@ -258,6 +258,21 @@
         switch.turn_off      
       {% endif %}
       
+- id: ledvance_plug_000738b9_1
+  alias: ledvance_plug_000738b9_1
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/switch/ledvance_plug_000738b9_1/state"
+  action:
+  - data:
+      entity_id: switch.ledvance_plug_000738b9_1
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        switch.turn_on
+      {% else %} 
+        switch.turn_off      
+      {% endif %}
+      
 - id: enable_zigbee_join
   alias: Enable Zigbee joining
   hide_entity: true
