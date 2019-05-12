@@ -243,6 +243,21 @@
       speed: "{{ trigger.payload }}"
       entity_id: fan.king_of_fans_inc_hdc52eastwindfan_0016d039_1_514
       
+- id: livingroom_subwoofer
+  alias: livingroom_subwoofer
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/switch/ledvance_plug_00073b5c_1/state"
+  action:
+  - data:
+      entity_id: switch.ledvance_plug_00073b5c_1
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        switch.turn_on
+      {% else %} 
+        switch.turn_off      
+      {% endif %}
+      
 - id: enable_zigbee_join
   alias: Enable Zigbee joining
   hide_entity: true
