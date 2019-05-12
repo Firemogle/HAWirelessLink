@@ -237,14 +237,13 @@
   - platform: mqtt
     topic: "/HAwirelesslink/return/fan/king_of_fans_inc_hdc52eastwindfan_0016d039_1_514/speed"
   action:
-  - entity_id:
-      fan.king_of_fans_inc_hdc52eastwindfan_0016d039_1_514
-    service:
+  - service:
       fan.set_speed
     data-template:
       speed: >
         {{ trigger.payload }}
-      
+      entity_id:
+        fan.king_of_fans_inc_hdc52eastwindfan_0016d039_1_514
       
 - id: enable_zigbee_join
   alias: Enable Zigbee joining
