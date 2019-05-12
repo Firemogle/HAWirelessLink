@@ -231,8 +231,8 @@
         fan.turn_off      
       {% endif %}
       
-- id: kitchen_fan
-  alias: kitchen_fan
+- id: kitchen_fan_speed
+  alias: kitchen_fan_speed
   trigger:
   - platform: mqtt
     topic: "/HAwirelesslink/return/fan/king_of_fans_inc_hdc52eastwindfan_0016d039_1_514/speed"
