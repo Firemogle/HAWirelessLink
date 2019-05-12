@@ -276,7 +276,7 @@
   alias: king_of_fans_inc_hdc52eastwindfan_0020d39d_1_brightness
   trigger:
   - platform: mqtt
-    topic: "hawirelesslink/light/king_of_fans_inc_hdc52eastwindfan_0020d39d_1/brightness"
+    topic: "/HAwirelesslink/return/light/king_of_fans_inc_hdc52eastwindfan_0020d39d_1/brightness"
   action:
   - data_template:
       entity_id: light.king_of_fans_inc_hdc52eastwindfan_0020d39d_1
@@ -292,7 +292,7 @@
   alias: king_of_fans_inc_hdc52eastwindfan_0020d39d_1_light
   trigger:
   - platform: mqtt
-    topic: "hawirelesslink/light/king_of_fans_inc_hdc52eastwindfan_0020d39d_1/state"
+    topic: "/HAwirelesslink/return/light/king_of_fans_inc_hdc52eastwindfan_0020d39d_1/state"
   action:
   - data:
       entity_id: light.king_of_fans_inc_hdc52eastwindfan_0020d39d_1
@@ -303,8 +303,8 @@
         light.turn_off      
       {% endif %}
       
-- id: kitchen_fan
-  alias: kitchen_fan
+- id: master_fan
+  alias: master_fan
   trigger:
   - platform: mqtt
     topic: "/HAwirelesslink/return/fan/king_of_fans_inc_hdc52eastwindfan_0020d39d_1_514/state"
@@ -318,8 +318,8 @@
         fan.turn_off      
       {% endif %}
       
-- id: kitchen_fan_speed
-  alias: kitchen_fan_speed
+- id: master_fan_speed
+  alias: master_fan_speed
   trigger:
   - platform: mqtt
     topic: "/HAwirelesslink/return/fan/king_of_fans_inc_hdc52eastwindfan_0020d39d_1_514/speed"
