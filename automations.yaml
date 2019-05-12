@@ -272,8 +272,8 @@
         switch.turn_off      
       {% endif %}
       
-- id: king_of_fans_inc_hdc52eastwindfan_0020d39d_1_brightness
-  alias: king_of_fans_inc_hdc52eastwindfan_0020d39d_1_brightness
+- id: master_fan_brightness
+  alias: master_fan_brightness
   trigger:
   - platform: mqtt
     topic: "/HAwirelesslink/return/light/king_of_fans_inc_hdc52eastwindfan_0020d39d_1/brightness"
@@ -288,8 +288,8 @@
         light.turn_on     
       {% endif %}       
 
-- id: king_of_fans_inc_hdc52eastwindfan_0020d39d_1_light
-  alias: king_of_fans_inc_hdc52eastwindfan_0020d39d_1_light
+- id: master_fan_light
+  alias: master_fan_light
   trigger:
   - platform: mqtt
     topic: "/HAwirelesslink/return/light/king_of_fans_inc_hdc52eastwindfan_0020d39d_1/state"
