@@ -56,6 +56,8 @@ zha:
   device_config:
       00:22:a3:00:00:16:d0:39-1:
           type: 'light'
+      00:22:a3:00:00:20:d3:9d-1:
+          type: 'light'
 
 input_boolean:
   zigbee_permit_join:
