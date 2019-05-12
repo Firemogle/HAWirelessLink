@@ -153,7 +153,70 @@
         light.turn_off      
       {% endif %}
 
+- id: kitchen_sink_brightness
+  alias: kitchen_sink_brightness
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/main_bath_vent_light/brightness"
+  action:
+  - data_template:
+      entity_id: light.sengled_e11_g13_031e3554_1
+      brightness: "{{ trigger.payload | int }}"
+    service_template: >
+      {% if trigger.payload | int == 0 %}
+        light.turn_off
+      {% else %} 
+        light.turn_on     
+      {% endif %}       
 
+- id: kitchen_sink_light
+  alias: kitchen_sink_light
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/sengled_e11_g13_031e3554_1/state"
+  action:
+  - data:
+      entity_id: light.sengled_e11_g13_031e3554_1
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        light.turn_on
+      {% else %} 
+        light.turn_off      
+      {% endif %}
+
+#
+- id: kitchen_fan_brightness
+  alias: kitchen_fan_brightness
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/king_of_fans_inc_hdc52eastwindfan_0016d039_1/brightness"
+  action:
+  - data_template:
+      entity_id: light.king_of_fans_inc_hdc52eastwindfan_0016d039_1
+      brightness: "{{ trigger.payload | int }}"
+    service_template: >
+      {% if trigger.payload | int == 0 %}
+        light.turn_off
+      {% else %} 
+        light.turn_on     
+      {% endif %}       
+
+- id: kitchen_fan_light
+  alias: kitchen_fan_light
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/king_of_fans_inc_hdc52eastwindfan_0016d039_1/state"
+  action:
+  - data:
+      entity_id: light.king_of_fans_inc_hdc52eastwindfan_0016d039_1
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        light.turn_on
+      {% else %} 
+        light.turn_off      
+      {% endif %}
+      
+      
 - id: enable_zigbee_join
   alias: Enable Zigbee joining
   hide_entity: true
