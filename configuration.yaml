@@ -54,7 +54,7 @@ zha:
   usb_path: /dev/ttyUSB1
   database_path: /config/zigbee.db
   device_config:
-      00:22:a3:00:00:16:d0:39-8:
+      00:22:a3:00:00:16:d0:39-6:
           type: 'light'
 
 input_boolean:
