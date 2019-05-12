@@ -216,6 +216,35 @@
         light.turn_off      
       {% endif %}
       
+- id: kitchen_fan
+  alias: kitchen_fan
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/fan/king_of_fans_inc_hdc52eastwindfan_0016d039_1_514/state"
+  action:
+  - data:
+      entity_id: fan.king_of_fans_inc_hdc52eastwindfan_0016d039_1_514
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        fan.turn_on
+      {% else %} 
+        fan.turn_off      
+      {% endif %}
+      
+- id: kitchen_fan
+  alias: kitchen_fan
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/fan/king_of_fans_inc_hdc52eastwindfan_0016d039_1_514/speed"
+  action:
+  - entity_id:
+      fan.king_of_fans_inc_hdc52eastwindfan_0016d039_1_514
+    service:
+      fan.set_speed
+    data-template:
+      speed: >
+        {{ trigger.payload }}
+      
       
 - id: enable_zigbee_join
   alias: Enable Zigbee joining
