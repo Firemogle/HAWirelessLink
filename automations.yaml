@@ -307,7 +307,7 @@
   alias: emi_star_lamp
   trigger:
   - platform: mqtt
-    topic: "/HAwirelesslink/return/light/ledvance_plug_00073b5c_1/state"
+    topic: "/HAwirelesslink/return/light/ledvance_plug_00054677_1/state"
   action:
   - data:
       entity_id: switch.ledvance_plug_00073b5c_1
