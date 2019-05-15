@@ -303,6 +303,22 @@
         light.turn_off      
       {% endif %}
       
+- id: emi_star_lamp
+  alias: emi_star_lamp
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/ledvance_plug_00073b5c_1/state"
+  action:
+  - data:
+      entity_id: switch.ledvance_plug_00073b5c_1
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        switch.turn_on
+      {% else %} 
+        switch.turn_off      
+      {% endif %}
+      
+      
 - id: master_fan
   alias: master_fan
   trigger:
