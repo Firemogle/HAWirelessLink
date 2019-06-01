@@ -29,7 +29,7 @@ updater:
   include_used_components: true
 
 # View all events in a logbook
-logbook:
+#logbook:
 
 # Cloud
 cloud:
