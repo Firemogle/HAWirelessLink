@@ -388,6 +388,21 @@
         switch.turn_off      
       {% endif %}
       
+- id: front_door_lock
+  alias: front_door_lock
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/hawirelesslink/lock/schlage_allegion_be469_touchscreen_deadbolt_locked_4/state"
+  action:
+  - data:
+      entity_id: lock.schlage_allegion_be469_touchscreen_deadbolt_locked_4
+    service_template: >
+      {% if trigger.payload == 'LOCK' %}
+        lock.lock
+      {% else %} 
+        lock.unlock      
+      {% endif %}
+      
 - id: enable_zigbee_join
   alias: Enable Zigbee joining
   hide_entity: true
