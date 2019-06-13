@@ -427,7 +427,7 @@
   action:
   - data:
       entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
-      brightness: {{ states.light.hallway.attributes.brightness | int }}
+      brightness: "{{ states.light.hallway.attributes.brightness | int }}"
     service_template: >
       {% if states.light.hallway.attributes.brightness | int == 0 % or states.light.hallway.state = "off"}
         light.turn_off
@@ -444,7 +444,7 @@
   action:
   - data:
       entity_id: light.hallway
-      brightness: {{ states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness | int }}
+      brightness: "{{ states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness | int }}"
     service_template: >
       {% if states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness | int == 0 or states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.state = "off" %}
         light.turn_off
