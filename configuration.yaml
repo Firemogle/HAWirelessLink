@@ -36,6 +36,10 @@ cloud:
 
 system_health:
 
+- platform: decora_wifi
+  username: !secret DECORA_USER
+  password: !secret DECORA_PW
+
 speedtestdotnet:
   scan_interval:
     minutes: 30
@@ -43,9 +47,11 @@ speedtestdotnet:
     - ping
     - download
     - upload
+"0x05, 0x3C, 0xB9, 0x02, 0x36, 0x8E, 0x6E, 0x68, 0xBD, 0xE2, 0x9C, 0xFE, 0xEA, 0x98, 0x82, 0xCE"
+#
 
 zwave:
-  network_key: "0x05, 0x3C, 0xB9, 0x02, 0x36, 0x8E, 0x6E, 0x68, 0xBD, 0xE2, 0x9C, 0xFE, 0xEA, 0x98, 0x82, 0xCE"
+  network_key: !secret NWK
   usb_path: /dev/ttyUSB0
   device_config: !include zwave_device_config.yaml
   
@@ -73,8 +79,8 @@ timer:
 # Enable connection to MQTT server
 mqtt:
   broker: 192.168.1.243
-  username: firemogle
-  password: firemogleHA
+  username: !secret MQTTUN
+  password: !secret MQTTPW
   discovery: false
   birth_message:
     topic: 'hass/status'
