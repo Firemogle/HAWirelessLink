@@ -1,0 +1,32 @@
+- id: main_to_remote_hall_brightness
+  alias: main_to_remote_hall_brightness
+  trigger:
+  - entity_id: light.hallway
+    platform: state
+  action:
+  - data:
+      entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
+      brightness: "{{ states.light.hallway.attributes.brightness | int }}"
+    service_template: >
+      {% if (states.light.hallway.attributes.brightness | int == 0 ) or (states.light.hallway.state == "off") %}
+        light.turn_off
+      {% else %} 
+        light.turn_on     
+      {% endif %}       
+     
+      
+- id: remote_to_main_hall_brightness
+  alias: remote_to_main_hall_brightness
+  trigger:
+  - entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
+    platform: state
+  action:
+  - data:
+      entity_id: light.hallway
+      brightness: "{{ states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness | int }}"
+    service_template: >
+      {% if (states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness | int == 0) or (states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.state == "off") %}
+        light.turn_off
+      {% else %} 
+        light.turn_on     
+      {% endif %}
