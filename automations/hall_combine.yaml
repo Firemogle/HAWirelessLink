@@ -1,5 +1,6 @@
 - id: main_to_remote_hall_brightness
   alias: main_to_remote_hall_brightness
+  initial_state: 'off'
   trigger:
   - entity_id: light.hallway
     platform: state
@@ -17,6 +18,7 @@
       
 - id: remote_to_main_hall_brightness
   alias: remote_to_main_hall_brightness
+  initial_state: 'off'
   trigger:
   - entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
     platform: state
