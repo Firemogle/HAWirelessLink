@@ -1,0 +1,32 @@
+- id: main_bath_vanity_brightness
+  alias: main_bath_vanity_brightness
+  initial_state: 'off'
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/leviton_dz6hd_1bz_decora_600w_smart_dimmer_level/brightness"
+  action:
+  - data_template:
+      entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level
+      brightness: "{{ trigger.payload | int }}"
+    service_template: >
+      {% if trigger.payload | int == 0 %}
+        light.turn_off
+      {% else %} 
+        light.turn_on     
+      {% endif %}       
+
+- id: main_bath_vanity_light
+  alias: main_bath_vanity_light
+  initial_state: 'off'
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/leviton_dz6hd_1bz_decora_600w_smart_dimmer_level/state"
+  action:
+  - data:
+      entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        light.turn_on
+      {% else %} 
+        light.turn_off      
+      {% endif %}
