@@ -1,0 +1,15 @@
+- id: livingroom_subwoofer
+  alias: livingroom_subwoofer
+  initial_state: 'off'
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/switch/ledvance_plug_00073b5c_1/state"
+  action:
+  - data:
+      entity_id: switch.ledvance_plug_00073b5c_1
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        switch.turn_on
+      {% else %} 
+        switch.turn_off      
+      {% endif %}
