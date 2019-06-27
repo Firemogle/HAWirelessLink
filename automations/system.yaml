@@ -1,0 +1,10 @@
+- id: 'ha_start'
+  alias: ha_start
+  trigger:
+  - event: start
+    platform: homeassistant
+  condition: []
+  action:
+  - data:
+      entity_id: script.initialization
+    service: script.turn_on
