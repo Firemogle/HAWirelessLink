@@ -1,0 +1,44 @@
+- id: emi_fan
+  alias: emi_fan
+  initial_state: 'off'
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/fan/king_of_fans_inc_hbuniversalcfremote_0020d37b_1_514/state"
+  action:
+  - data:
+      entity_id: fan.king_of_fans_inc_hbuniversalcfremote_0020d37b_1_514
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        fan.turn_on
+      {% else %} 
+        fan.turn_off      
+      {% endif %}
+      
+- id: emi_fan_speed
+  alias: emi_fan_speed
+  initial_state: 'off'
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/fan/king_of_fans_inc_hbuniversalcfremote_0020d37b_1_514/speed"
+  action:
+  - service:
+      fan.set_speed
+    data_template:
+      speed: "{{ trigger.payload }}"
+      entity_id: fan.king_of_fans_inc_hbuniversalcfremote_0020d37b_1_514
+      
+- id: emi_fan_light
+  alias: emi_fan_light
+  initial_state: 'off'
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/king_of_fans_inc_hbuniversalcfremote_0020d37b_1_6/state"
+  action:
+  - data:
+      entity_id: switch.king_of_fans_inc_hbuniversalcfremote_0020d37b_1_6
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        switch.turn_on
+      {% else %} 
+        switch.turn_off      
+      {% endif %}
