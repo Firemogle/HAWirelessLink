@@ -1,0 +1,7 @@
+initialization:
+  alias: initialization
+  sequence:
+  - delay: '00:01:00'
+  - service: automation.turn_on
+    data:
+      entity_id: "all"
