@@ -1,0 +1,15 @@
+- id: jasco_products_26931_smart_motion_switch_switch
+  alias: jasco_products_26931_smart_motion_switch_switch
+  initial_state: 'off'
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/jasco_products_26931_smart_motion_switch_switch/state"
+  action:
+  - data:
+      entity_id: switch.jasco_products_26931_smart_motion_switch_switch
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        switch.turn_on
+      {% else %} 
+        switch.turn_off      
+      {% endif %}
