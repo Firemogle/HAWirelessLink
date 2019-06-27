@@ -1,0 +1,15 @@
+- id: garage_outlet
+  alias: garage_outlet
+  initial_state: 'off'
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/switch/enerwave_zw15rm_plus_15a_tr_smart_meter_duplex_receptacle_switch/state"
+  action:
+  - data:
+      entity_id: switch.enerwave_zw15rm_plus_15a_tr_smart_meter_duplex_receptacle_switch
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        switch.turn_on
+      {% else %} 
+        switch.turn_off      
+      {% endif %}
