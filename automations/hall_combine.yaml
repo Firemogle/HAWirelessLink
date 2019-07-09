@@ -41,16 +41,17 @@
     - platform: state
       entity_id: light.hallway
   action:
-    service_template: >
-      {% if trigger.to_state.state == "on" %}
-      light.turn_on
-      {% elif trigger.to_state.state == "off" %}
-      light.turn_off
-      {% endif %}
-    data_template: 
-      entity_id: >
-        {% if trigger.from_state.entity_id == "light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3" %}
-        light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
-        {% elif trigger.from_state.entity_id == "light.hallway" %}
-        light.hallway
-        {% endif %}
+    - data_template: 
+        entity_id: >
+          {% if trigger.from_state.entity_id == "light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3" %}
+            light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
+          {% elif trigger.from_state.entity_id == "light.hallway" %}
+            light.hallway
+          {% endif %}
+      service_template: >
+          {% if trigger.to_state.state == "on" %}
+            light.turn_on
+          {% elif trigger.to_state.state == "off" %}
+            light.turn_off
+          {% endif %}
+    
