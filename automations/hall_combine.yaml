@@ -37,13 +37,9 @@
 - alias: Hallway Mirror
   trigger:
     - platform: state
-      entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3, light.hallway
-      from: 'on'
-      to: 'off'
+      entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
     - platform: state
-      entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3, light.hallway
-      from: 'off'
-      to: 'on'
+      entity_id: light.hallway
   action:
     service_template: >
       {% if trigger.to_state.state == "on" %}
