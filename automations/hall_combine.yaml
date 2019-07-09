@@ -34,7 +34,7 @@
 #      {% endif %}
 
 - id: hallway_mirror
-- alias: Hallway Mirror
+  alias: Hallway Mirror
   trigger:
     - platform: state
       entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
