@@ -1,34 +1,60 @@
-- id: main_to_remote_hall_brightness
-  alias: main_to_remote_hall_brightness
-  initial_state: 'off'
-  trigger:
-  - entity_id: light.hallway
-    platform: state
-  action:
-  - data:
-      entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
-      brightness: "{{ states.light.hallway.attributes.brightness | int }}"
-    service_template: >
-      {% if (states.light.hallway.attributes.brightness | int == 0 ) or (states.light.hallway.state == "off") %}
-        light.turn_off
-      {% else %} 
-        light.turn_on     
-      {% endif %}       
+#- id: main_to_remote_hall_brightness
+#  alias: main_to_remote_hall_brightness
+#  initial_state: 'off'
+#  trigger:
+#  - entity_id: light.hallway
+#    platform: state
+#  action:
+#  - data:
+#      entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
+#      brightness: "{{ states.light.hallway.attributes.brightness | int }}"
+#    service_template: >
+#      {% if (states.light.hallway.attributes.brightness | int == 0 ) or (states.light.hallway.state == "off") %}
+#        light.turn_off
+#      {% else %} 
+#        light.turn_on     
+#     {% endif %}       
      
       
-- id: remote_to_main_hall_brightness
-  alias: remote_to_main_hall_brightness
-  initial_state: 'off'
+#- id: remote_to_main_hall_brightness
+#  alias: remote_to_main_hall_brightness
+#  initial_state: 'off'
+#  trigger:
+#  - entity_id: 
+#    platform: state
+#  action:
+#  - data:
+#      entity_id: light.hallway
+#      brightness: "{{ states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness | int }}"
+#    service_template: >
+#      {% if (states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness | int == 0) or (states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.state == "off") %}
+#        light.turn_off
+#      {% else %} 
+#        light.turn_on     
+#      {% endif %}
+
+- id: hallway_mirror
+- alias: Hallway Mirror
   trigger:
-  - entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
-    platform: state
+    - platform: state
+      entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3, light.hallway
+      from: 'on'
+      to: 'off'
+    - platform: state
+      entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3, light.hallway
+      from: 'off'
+      to: 'on'
   action:
-  - data:
-      entity_id: light.hallway
-      brightness: "{{ states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness | int }}"
     service_template: >
-      {% if (states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness | int == 0) or (states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.state == "off") %}
-        light.turn_off
-      {% else %} 
-        light.turn_on     
+      {% if trigger.to_state.state == "on" %}
+      switch.turn_on
+      {% elif trigger.to_state.state == "off" %}
+      switch.turn_off
       {% endif %}
+    data_template: 
+      entity_id: >
+        {% if trigger.from_state.entity_id == "light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3" %}
+        light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
+        {% elif trigger.from_state.entity_id == "light.hallway" %}
+        light.hallway
+        {% endif %}
