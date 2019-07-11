@@ -5,7 +5,7 @@
   - entity_id: light.hallway
     platform: state
   action:
-  - data:
+  - data_template:
       entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
       brightness: >
         {{ states.light.hallway.attributes.brightness }}
@@ -24,7 +24,7 @@
   - entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
     platform: state
   action:
-  - data:
+  - data_template:
       entity_id: light.hallway
       brightness: >
         {{ states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness }}
