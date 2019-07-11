@@ -13,7 +13,7 @@
         light.turn_off
       {% else %} 
         light.turn_on     
-     {% endif %}       
+      {% endif %}       
      
       
 - id: remote_to_main_hall_brightness
