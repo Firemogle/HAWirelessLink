@@ -21,7 +21,7 @@
   alias: remote_to_main_hall_brightness
   initial_state: 'off'
   trigger:
-  - entity_id: 
+  - entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
     platform: state
   action:
   - data:
