@@ -101,10 +101,6 @@ mqtt_statestream:
       - fan
       - lock
       
-mqtt_eventstream:
-  publish_topic: slaves/wireless_link
-  subscribe_topic: master/topic
-      
 group: !include groups.yaml
 automation: !include_dir_merge_list automations/
 script: !include scripts.yaml
