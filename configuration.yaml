@@ -77,7 +77,7 @@ timer:
 
 # Enable connection to MQTT server
 mqtt:
-  broker: 192.168.1.243
+  broker: 192.168.2.2
   username: firemogle
   password: firemogleHA
   discovery: false
