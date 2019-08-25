@@ -3,10 +3,10 @@
   initial_state: 'off'
   trigger:
   - platform: mqtt
-    topic: "/HAwirelesslink/return/switch/main_bath_fan/state"
+    topic: "hawirelesslink/switch/jasco_products_26931_smart_motion_switch_switch_3/state"
   action:
   - data:
-      entity_id: switch.main_bath_fan
+      entity_id: switch.jasco_products_26931_smart_motion_switch_switch_3
     service_template: >
       {% if trigger.payload == 'on' %}
         switch.turn_on
