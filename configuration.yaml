@@ -40,6 +40,12 @@ light:
   - platform: decora_wifi
     username: !secret DECORA_USER
     password: !secret DECORA_PW
+  
+  - platform: group
+    name: hall_lights
+    entities:
+      light.hallway
+      light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
 
 speedtestdotnet:
   scan_interval:
