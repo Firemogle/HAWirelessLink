@@ -42,8 +42,8 @@
   - data:
       entity_id: light.ledvance_a19_rgbw_00060a5e_1
       rgb_color: 
-        - '{{ trigger.payload_json[0].value }}'
-        - '{{ trigger.payload_json[1].value }}'
-        - '{{ trigger.payload_json[2].value }}'
+        - '{{ trigger.payload.split(",")[0] | int }}'
+        - '{{ trigger.payload.split(",")[1] | int }}'
+        - '{{ trigger.payload.split(",")[2] | int }}'
     service:
       light.turn_on
