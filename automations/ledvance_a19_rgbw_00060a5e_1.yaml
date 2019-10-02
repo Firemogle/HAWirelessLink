@@ -45,5 +45,5 @@
         - "{{trigger.payload.split(',')[0] | int}}"
         - "{{trigger.payload.split(',')[1] | int}}"
         - "{{trigger.payload.split(',')[2] | int}}"
-      service:
-        light.turn_on
+    service:
+      light.turn_on
