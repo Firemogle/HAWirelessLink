@@ -40,7 +40,9 @@
     topic: "/HAwirelesslink/return/light/ledvance_a19_rgbw_00061a28_1/rgb_color"
   action:
   - data_template:
-      entity_id: light.ledvance_a19_rgbw_00061a28_1
-      rgb_color: "{{ trigger.payload | list }}"
+      entity_id: >
+        light.ledvance_a19_rgbw_00061a28_1
+      rgb_color: >
+        {{ trigger.payload | list }}
     service:
       light.turn_on
