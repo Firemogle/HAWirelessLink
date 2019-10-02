@@ -39,7 +39,7 @@
   - platform: mqtt
     topic: "/HAwirelesslink/return/light/ledvance_a19_rgbw_00060a5e_1/rgb_color"
   action:
-  - data_template:
+  - data_template: >
       entity_id: light.ledvance_a19_rgbw_00060a5e_1
       rgb_color: [{{ trigger.payload | join(',') }}]
     service:
