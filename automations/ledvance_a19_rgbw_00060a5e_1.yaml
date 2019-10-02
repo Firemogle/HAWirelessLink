@@ -43,8 +43,9 @@
       entity_id: >
         light.ledvance_a19_rgbw_00060a5e_1
       rgb_color: >
-        {{ trigger.payload.split(',') | replace("'", "") }}
+        {% set rgb = trigger.payload.split(',') %}
+        - {{rgb[0]}}
+        - {{rgb[1]}}
+        - {{rgb[2]}}
     service:
-    service:
-      light.turn_on
       light.turn_on
