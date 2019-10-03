@@ -43,7 +43,7 @@
       entity_id:  light.ledvance_a19_rgbw_00061a28_1
       rgb_color:
         - "{{ trigger.payload[:2] | int(0,16) }}"
-        - "{{ trigger.payload[2:2] | int(0,16) }}"
+        - "{{ trigger.payload[2:-2] | int(0,16) }}"
         - "{{ trigger.payload[-2:] | int(0,16) }}"
     service:
       light.turn_on
