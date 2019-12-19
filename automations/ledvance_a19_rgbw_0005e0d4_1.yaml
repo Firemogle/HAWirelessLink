@@ -1,0 +1,48 @@
+- id: ledvance_a19_rgbw_0005e0d4_1_brightness
+  alias: ledvance_a19_rgbw_0005e0d4_1_brightness
+  initial_state: 'off'
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/ledvance_a19_rgbw_0005e0d4_1/brightness"
+  action:
+  - data_template:
+      entity_id: light.ledvance_a19_rgbw_0005e0d4_1
+      brightness: "{{ trigger.payload | int }}"
+    service_template: >
+      {% if trigger.payload | int == 0 %}
+        light.turn_off
+      {% else %} 
+        light.turn_on     
+      {% endif %}
+      
+- id: ledvance_a19_rgbw_0005e0d4_1_light
+  alias: ledvance_a19_rgbw_0005e0d4_1_light
+  initial_state: 'off'
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/ledvance_a19_rgbw_0005e0d4_1/state"
+  action:
+  - data:
+      entity_id: light.ledvance_a19_rgbw_0005e0d4_1
+    service_template: >
+      {% if trigger.payload == 'on' %}
+        light.turn_on
+      {% else %} 
+        light.turn_off      
+      {% endif %}
+      
+- id: ledvance_a19_rgbw_0005e0d4_1light_color
+  alias: ledvance_a19_rgbw_0005e0d4_1light_color
+  initial_state: 'off'
+  trigger:
+  - platform: mqtt
+    topic: "/HAwirelesslink/return/light/ledvance_a19_rgbw_0005e0d4_1/rgb_color"
+  action:
+  - data_template:
+      entity_id:  light.ledvance_a19_rgbw_0005e0d4_1
+      rgb_color:
+        - "{{ trigger.payload[:2] | int(0,16) }}"
+        - "{{ trigger.payload[2:-2] | int(0,16) }}"
+        - "{{ trigger.payload[-2:] | int(0,16) }}"
+    service:
+      light.turn_on
