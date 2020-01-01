@@ -1,4 +1,5 @@
-- alias: "MQTT Light Color"
+- id light_color
+  alias: "MQTT Light Color"
   trigger:
     - platform: mqtt
       topic: '/HAwirelesslink/return/light/#'
