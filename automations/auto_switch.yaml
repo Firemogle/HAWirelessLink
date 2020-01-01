@@ -1,0 +1,13 @@
+- alias: "MQTT Light and Switch Toggle"
+  trigger:
+    - platform: mqtt
+      topic: '/HAwirelesslink/return/switch/#'
+    - platform: mqtt
+      topic: '/HAwirelesslink/return/light/#'
+  condition:
+    condition: template
+    value_template:  "{{ trigger.topic.split('/')[5] == 'state' }}"
+  action:
+    - service_template: "{{ trigger.topic.split('/')[3] }}.turn_{{trigger.payload | lower }}"
+      data_template:
+        entity_id: "{{ trigger.topic.split('/')[3] }}.{{ trigger.topic.split('/')[4] }}"
