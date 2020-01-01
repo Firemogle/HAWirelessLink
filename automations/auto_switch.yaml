@@ -1,4 +1,5 @@
-- alias: "MQTT Light and Switch Toggle"
+- id: switch_light_toggle
+  alias: "MQTT Light and Switch Toggle"
   trigger:
     - platform: mqtt
       topic: '/HAwirelesslink/return/switch/#'
