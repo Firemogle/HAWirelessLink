@@ -3,7 +3,7 @@
   alias: "MQTT Fan Speed"
   trigger:
     - platform: mqtt
-      topic: '/HAwirelesslink/return/light/#'
+      topic: '/HAwirelesslink/return/fan/#'
   condition:
   - condition: template
     value_template:  "{{ trigger.topic.split('/')[5] == 'speed' }}"
