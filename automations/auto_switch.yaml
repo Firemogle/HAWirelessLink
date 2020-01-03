@@ -5,6 +5,8 @@
       topic: '/HAwirelesslink/return/switch/#'
     - platform: mqtt
       topic: '/HAwirelesslink/return/light/#'
+    - platform: mqtt
+      topic: '/HAwirelesslink/return/fan/#'
   condition:
     condition: template
     value_template:  "{{ trigger.topic.split('/')[5] == 'state' }}"
