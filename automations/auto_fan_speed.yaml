@@ -1,0 +1,14 @@
+  
+- id: light_bright
+  alias: "MQTT Light Brightness"
+  trigger:
+    - platform: mqtt
+      topic: '/HAwirelesslink/return/light/#'
+  condition:
+  - condition: template
+    value_template:  "{{ trigger.topic.split('/')[5] == 'brightness' }}"
+  action:
+    - service: fan.set_speed
+      data_template:
+        entity_id: "{{ trigger.topic.split('/')[3] }}.{{ trigger.topic.split('/')[4] }}"
+        speed: "{{trigger.payload}}"
