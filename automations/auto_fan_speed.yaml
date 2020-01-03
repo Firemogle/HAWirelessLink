@@ -1,6 +1,6 @@
   
-- id: light_bright
-  alias: "MQTT Light Brightness"
+- id: fan_speed
+  alias: "MQTT Fan Speed"
   trigger:
     - platform: mqtt
       topic: '/HAwirelesslink/return/light/#'
