@@ -1,4 +1,4 @@
-- id light_color
+- id: light_color
   alias: "MQTT Light Color"
   trigger:
     - platform: mqtt
