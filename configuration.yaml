@@ -70,17 +70,6 @@ zha:
       00:22:a3:00:00:20:d3:9d-1:
           type: 'light'
 
-input_boolean:
-  zigbee_permit_join:
-    name: Allow devices to join
-    initial: off
-    icon: mdi:cellphone-wireless
-    
-timer:
-  zigbee_permit_join:
-    name: Time remaining
-    duration: 600 # Updated this to the number of seconds you wish
-
 # Enable connection to MQTT server
 mqtt:
   broker: 192.168.2.2
