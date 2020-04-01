@@ -1,6 +1,7 @@
   
 - id: fan_speed
   alias: "MQTT Fan Speed"
+  initial_state: 'on'
   trigger:
     - platform: mqtt
       topic: '/HAwirelesslink/return/fan/#'
