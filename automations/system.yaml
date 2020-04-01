@@ -1,5 +1,6 @@
 - id: 'ha_start'
   alias: ha_start
+  initial_state: 'on'
   trigger:
   - event: start
     platform: homeassistant
