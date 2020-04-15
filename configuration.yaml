@@ -17,6 +17,7 @@ homeassistant:
 frontend:
 
 discovery:
+zeroconf:
 
 # Enables configuration UI
 config:
