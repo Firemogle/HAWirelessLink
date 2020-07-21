@@ -51,7 +51,7 @@ light:
 input_text:
   hall_light_initialize:
     name: hall_light_initialize
-    initial: null
+    initial: 'none'
 
 speedtestdotnet:
   scan_interval:
