@@ -16,7 +16,7 @@
       - condition: template
         value_template: "{{ states('input_text.hall_light_initialize') = 'hall_lights' }}"
   action:
-    service: input_text.set_value
+    - service: input_text.set_value
       data_template:
         entity_id: input_text.hall_light_initialize
         value: '{{ trigger.to_state.name }}'
