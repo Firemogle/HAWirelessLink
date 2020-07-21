@@ -10,11 +10,11 @@
     condition: or
     conditions:
       - condition: template
-        value_template: "{{ states('input_text.hall_light_initialize') = 'hallway' }}"
+        value_template: "{{ is_state('input_text.hall_light_initialize', 'hallway') }}"
       - condition: template
-        value_template: "{{ states('input_text.hall_light_initialize') = 'leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3' }}"
+        value_template: "{{ is_state('input_text.hall_light_initialize', 'leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3') }}"
       - condition: template
-        value_template: "{{ states('input_text.hall_light_initialize') = 'hall_lights' }}"
+        value_template: "{{ is_state('input_text.hall_light_initialize', 'hall_lights') }}"
   action:
     - service: light.turn_on
       data_template:
