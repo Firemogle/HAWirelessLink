@@ -1,4 +1,7 @@
-- alias: sync_hall_light
+- id: sync_hall_light
+  alias: "Sync Zwave lights in basement stairwell
+  initial_state: 'on'
+  mode: queued
   trigger:
     - platform: state
       entity_id: 
