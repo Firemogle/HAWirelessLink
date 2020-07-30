@@ -37,7 +37,3 @@
         sequence:
           - service: switch.turn_off
             entity_id: switch.ledvance_plug_000738b9_1
-      default:
-        - service: notify.notify
-          data:
-            message: "Test"
