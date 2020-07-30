@@ -37,3 +37,7 @@
           sequence:
             - service: switch.turn_off
               entity_id: switch.ledvance_plug_000738b9_1
+          default:
+            - service: notify.frenck
+              data:
+                message: Some other unknown button was pressed!
