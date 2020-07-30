@@ -1,7 +1,7 @@
 - id: switch_light_toggle
   alias: "MQTT Light and Switch Toggle"
   initial_state: 'on'
-  mode: queued
+  mode: parallel
   trigger:
     - platform: mqtt
       topic: '/HAwirelesslink/return/switch/#'
