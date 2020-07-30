@@ -2,7 +2,7 @@
 - id: fan_speed
   alias: "MQTT Fan Speed"
   initial_state: 'on'
-  mode: queued
+  mode: parallel
   trigger:
     - platform: mqtt
       topic: '/HAwirelesslink/return/fan/#'
