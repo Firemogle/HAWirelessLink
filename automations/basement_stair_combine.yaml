@@ -1,5 +1,5 @@
 - id: sync_hall_light
-  alias: "Sync Zwave lights in basement stairwell
+  alias: "Sync Zwave lights in basement stairwell"
   initial_state: 'on'
   mode: queued
   trigger:
