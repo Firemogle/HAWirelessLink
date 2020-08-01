@@ -1,7 +1,7 @@
 - id: sync_hall_light
   alias: "Sync Zwave lights in basement stairwell"
   initial_state: 'on'
-  mode: queued
+  mode: single
   trigger:
     - platform: state
       entity_id: 
@@ -17,7 +17,9 @@
             value_template: "{{ state_attr(trigger.entity_id, 'friendly_name') == states.switch.leviton_dz15s_1bz_decora_smart_switch_switch.attributes.friendly_name }}"
         sequence:
           - service: switch.turn_on
-            entity_id: switch.jasco_products_26931_smart_motion_switch_switch_7 
+            entity_id: switch.jasco_products_26931_smart_motion_switch_switch_7
+          - delay:
+              milliseconds: 500
             
       - conditions:
           - condition: state
@@ -28,6 +30,8 @@
         sequence:
           - service: switch.turn_on
             entity_id: switch.leviton_dz15s_1bz_decora_smart_switch_switch
+          - delay:
+              milliseconds: 500
             
       - conditions:
           - condition: state
@@ -38,6 +42,8 @@
         sequence:
           - service: switch.turn_off
             entity_id: switch.jasco_products_26931_smart_motion_switch_switch_7 
+          - delay:
+              milliseconds: 500
             
       - conditions:
           - condition: state
@@ -48,3 +54,5 @@
         sequence:
           - service: switch.turn_off
             entity_id: switch.leviton_dz15s_1bz_decora_smart_switch_switch
+          - delay:
+              milliseconds: 500
