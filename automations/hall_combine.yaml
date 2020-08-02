@@ -9,8 +9,8 @@
   action:
       - choose:
         - conditions:
-            - condition: state
-              entity_id: light.hallway
+            - condition: template
+              value_template: "{{ state_attr(trigger.entity_id, 'friendly_name') == states.light.hallway.friendly_name }}" 
           sequence:
             - alias: "Hallway light pressed; loop until everything matches"
               repeat:
@@ -41,8 +41,8 @@
                                                and states.light.hallway.attributes.brightness == states.light.hall_lights 
                                                and states.light.hallway.attributes.brightness == states.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
         - conditions:
-            - condition: state
-              entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
+            - condition: template
+              value_template: "{{ state_attr(trigger.entity_id, 'friendly_name') == states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.friendly_name }}" 
           sequence:
             - alias: "2nd hall light pressed; loop until everything matches"
               repeat:
@@ -73,8 +73,8 @@
                                                and states.light.hallway.attributes.brightness == states.light.hall_lights 
                                                and states.light.hallway.attributes.brightness == states.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
         - conditions:
-            - condition: state
-              entity_id: light.hall_lights
+            - condition: template
+              value_template: "{{ state_attr(trigger.entity_id, 'friendly_name') == states.light.hall_lights.friendly_name }}" 
           sequence:
             - alias: "Lights changed in HA; loop until everything matches"
               repeat:
