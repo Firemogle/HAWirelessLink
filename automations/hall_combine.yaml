@@ -38,8 +38,8 @@
                 until:
                   - condition: template
                     value_template: "{{ states.light.hallway.attributes.brightness == states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness
-                                         and states.light.hallway.attributes.brightness == states.light.hall_lights 
-                                         and states.light.hallway.attributes.brightness == states.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
+                                         and states.light.hallway.attributes.brightness == states.light.hall_lights.attributes.brightness
+                                         and states.light.hall_lights.attributes.brightness == states.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
         - conditions:
             - condition: template
               value_template: "{{ state_attr(trigger.entity_id, 'friendly_name') == states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.friendly_name }}" 
@@ -70,8 +70,8 @@
                 until:
                   - condition: template
                     value_template: "{{ states.light.hallway.attributes.brightness == states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness
-                                         and states.light.hallway.attributes.brightness == states.light.hall_lights 
-                                         and states.light.hallway.attributes.brightness == states.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
+                                         and states.light.hallway.attributes.brightness == states.light.hall_lights.attributes.brightness
+                                         and states.light.hall_lights.attributes.brightness == states.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
         - conditions:
             - condition: template
               value_template: "{{ state_attr(trigger.entity_id, 'friendly_name') == states.light.hall_lights.friendly_name }}" 
@@ -102,5 +102,5 @@
                 until:
                   - condition: template
                     value_template: "{{ states.light.hallway.attributes.brightness == states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness
-                                         and states.light.hallway.attributes.brightness == states.light.hall_lights 
-                                         and states.light.hallway.attributes.brightness == states.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
+                                         and states.light.hallway.attributes.brightness == states.light.hall_lights.attributes.brightness
+                                         and states.light.hall_lights.attributes.brightness == states.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
