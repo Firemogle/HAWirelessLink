@@ -45,8 +45,7 @@ light:
   - platform: group
     name: hall_lights
     entities:
-      - light.hallway
-      - light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
+      - light.osram_lightify_a19_rgbw_ab93a600_level_light_color_on_off
       
 input_text:
   hall_light_initialize:
