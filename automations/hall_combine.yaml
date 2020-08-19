@@ -14,6 +14,11 @@
           sequence:
             - alias: "Hallway light pressed; loop until everything matches"
               repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ states.light.hallway.attributes.brightness != states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness
+                                         or states.light.hallway.attributes.brightness != states.light.hall_lights.attributes.brightness
+                                         or states.light.hall_lights.attributes.brightness != states.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
                 sequence:
                   - service_template: >
                       {% if is_state('light.hallway', 'off') %}
@@ -24,7 +29,7 @@
                     data_template:
                       entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
                       brightness: >
-                        {{ states.light.hallway.attributes.brightness }}
+                        "{{ states.light.hallway.attributes.brightness }}"
                   - service_template: >
                       {% if is_state('light.hallway', 'off') %}
                         light.turn_off
@@ -34,20 +39,21 @@
                     data_template:
                       entity_id: light.hall_lights
                       brightness: >
-                        {{ states.light.hallway.attributes.brightness }}
+                        "{{ states.light.hallway.attributes.brightness }}"
                   - delay:
                       milliseconds: 500
-                until:
-                  - condition: template
-                    value_template: "{{ states.light.hallway.attributes.brightness == states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness
-                                         and states.light.hallway.attributes.brightness == states.light.hall_lights.attributes.brightness
-                                         and states.light.hall_lights.attributes.brightness == states.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
+
         - conditions:
             - condition: template
               value_template: "{{ state_attr(trigger.entity_id, 'friendly_name') == states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.friendly_name }}" 
           sequence:
             - alias: "2nd hall light pressed; loop until everything matches"
               repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ states.light.hallway.attributes.brightness != states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness
+                                         or states.light.hallway.attributes.brightness != states.light.hall_lights.attributes.brightness
+                                         or states.light.hall_lights.attributes.brightness != states.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
                 sequence:
                   - service_template: >
                       {% if is_state('light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3', 'off') %}
@@ -58,7 +64,7 @@
                     data_template:
                       entity_id: light.hallway
                       brightness: >
-                        {{states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}
+                        "{{states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
                   - service_template: >
                       {% if is_state('light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3', 'off') %}
                         light.turn_off
@@ -68,20 +74,21 @@
                     data_template:
                       entity_id: light.hall_lights
                       brightness: >
-                        {{states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}
+                        "{{states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
                   - delay:
                       milliseconds: 500
-                until:
-                  - condition: template
-                    value_template: "{{ states.light.hallway.attributes.brightness == states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness
-                                         and states.light.hallway.attributes.brightness == states.light.hall_lights.attributes.brightness
-                                         and states.light.hall_lights.attributes.brightness == states.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
+
         - conditions:
             - condition: template
               value_template: "{{ state_attr(trigger.entity_id, 'friendly_name') == states.light.hall_lights.friendly_name }}" 
           sequence:
             - alias: "Lights changed in HA; loop until everything matches"
               repeat:
+                while:
+                  - condition: template
+                    value_template: "{{ states.light.hallway.attributes.brightness != states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness
+                                         or states.light.hallway.attributes.brightness != states.light.hall_lights.attributes.brightness
+                                         or states.light.hall_lights.attributes.brightness != states.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
                 sequence:
                   - service_template: >
                       {% if is_state('light.hall_lights', 'off') %}
@@ -92,7 +99,7 @@
                     data_template:
                       entity_id: light.hallway
                       brightness: >
-                        {{states.light.hall_lights.attributes.brightness}}
+                        "{{states.light.hall_lights.attributes.brightness}}"
                   - service_template: >
                       {% if is_state('light.hall_lights', 'off') %}
                         light.turn_off
@@ -102,11 +109,6 @@
                     data_template:
                       entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
                       brightness: >
-                        {{states.light.hall_lights.attributes.brightness}}
+                        "{{states.light.hall_lights.attributes.brightness}}"
                   - delay:
                       milliseconds: 500
-                until:
-                  - condition: template
-                    value_template: "{{ states.light.hallway.attributes.brightness == states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness
-                                         and states.light.hallway.attributes.brightness == states.light.hall_lights.attributes.brightness
-                                         and states.light.hall_lights.attributes.brightness == states.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.brightness}}"
