@@ -1,0 +1,9 @@
+- id: reboot_from_main
+  alias: reboot_from_main
+  initial_state: 'off'
+  trigger:
+  - platform: mqtt
+    topic: "HAMaster/status"
+    payload: 'offline'
+  action:
+    - service: homeassistant.restart
