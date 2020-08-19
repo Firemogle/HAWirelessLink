@@ -47,19 +47,6 @@ light:
     entities:
       - light.osram_lightify_a19_rgbw_ab93a600_level_light_color_on_off
       
-input_text:
-  hall_light_initialize:
-    name: hall_light_initialize
-    initial: 'none'
-
-speedtestdotnet:
-  scan_interval:
-    minutes: 30
-  monitored_conditions:
-    - ping
-    - download
-    - upload
-
 zwave:
   network_key: "0x05, 0x3C, 0xB9, 0x02, 0x36, 0x8E, 0x6E, 0x68, 0xBD, 0xE2, 0x9C, 0xFE, 0xEA, 0x98, 0x82, 0xCE"
   usb_path: /dev/ttyUSB0
