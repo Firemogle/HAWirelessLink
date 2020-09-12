@@ -13,6 +13,7 @@
               value_template: "{{ state_attr(trigger.entity_id, 'friendly_name') == states.light.hallway.friendly_name }}" 
           sequence:
             - alias: "Hallway light pressed; loop until everything matches"
+            sequence:
             - service_template: >
                 {% if is_state('light.hallway', 'off') %}
                   light.turn_off
@@ -41,6 +42,7 @@
               value_template: "{{ state_attr(trigger.entity_id, 'friendly_name') == states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.friendly_name }}" 
           sequence:
             - alias: "2nd hall light pressed; loop until everything matches"
+            sequence:
             - service_template: >
                 {% if is_state('light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3', 'off') %}
                   light.turn_off
@@ -69,6 +71,7 @@
               value_template: "{{ state_attr(trigger.entity_id, 'friendly_name') == states.light.hall_lights.friendly_name }}" 
           sequence:
             - alias: "Lights changed in HA; loop until everything matches"
+            sequence:
             - service_template: >
                 {% if is_state('light.hall_lights', 'off') %}
                   light.turn_off
