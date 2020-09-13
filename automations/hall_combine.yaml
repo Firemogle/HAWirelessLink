@@ -8,35 +8,23 @@
       entity_id: light.hall_lights
   action:
     - service_template: >
-        {% if trigger.to_state.state == 'on' %}
-          light.turn_off
-        {% else %}
-          light.turn_on
-        {% endif %}
+       light.turn_{{trigger.to_state.state}}
       data_template:
         entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
         brightness: >
-          "{{ trigger.to_state.state.attributes.brightness }}"
+          '{{ trigger.to_state.state.attributes.brightness|int }}'
     - service_template: >
-        {% if trigger.to_state.state == 'on' %}
-          light.turn_off
-        {% else %}
-          light.turn_on
-        {% endif %}
+       light.turn_{{trigger.to_state.state}}
       data_template:
         entity_id: light.hall_lights
         brightness: >
-          "{{ trigger.to_state.state.attributes.brightness }}"
+          '{{ trigger.to_state.state.attributes.brightness|int }}'
     - service_template: >
-        {% if trigger.to_state.state == 'on' %}
-          light.turn_off
-        {% else %}
-          light.turn_on
-        {% endif %}
+       light.turn_{{trigger.to_state.state}}
       data_template:
         entity_id: light.hallway
         brightness: >
-          "{{ trigger.to_state.state.attributes.brightness }}"
+          '{{ trigger.to_state.state.attributes.brightness|int }}'
     - delay:
         milliseconds: 500
 
