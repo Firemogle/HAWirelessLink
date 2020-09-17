@@ -1,6 +1,6 @@
 - id: front_door_lock
   alias: front_door_lock
-  initial_state: 'off'
+  initial_state: 'on'
   trigger:
   - platform: mqtt
     topic: "/HAwirelesslink/return/hawirelesslink/lock/schlage_allegion_be469_touchscreen_deadbolt_locked_4/state"
