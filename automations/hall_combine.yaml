@@ -10,7 +10,7 @@
       - choose:
           - conditions:
               - condition: template
-                value_template: "{{ trigger.from_state.attributes.friendly_name == states.light.hallway.friendly_name }}" 
+                value_template: "{{ trigger.from_state.attributes.friendly_name == states.light.hallway.attributes.friendly_name }}" 
             sequence:
               - service_template: >
                   {% if is_state('light.hallway', 'off') %}
@@ -37,7 +37,7 @@
 
           - conditions:
               - condition: template
-                value_template: "{{ trigger.from_state.attributes.friendly_name == states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.friendly_name }}" 
+                value_template: "{{ trigger.from_state.attributes.friendly_name == states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.attributes.friendly_name }}" 
             sequence:
               - service_template: >
                   {% if is_state('light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3', 'off') %}
@@ -64,7 +64,7 @@
 
           - conditions:
               - condition: template
-                value_template: "{{ trigger.from_state.attributes.friendly_name == states.light.hall_lights.friendly_name }}" 
+                value_template: "{{ trigger.from_state.attributes.friendly_name == states.light.hall_lights.attributes.friendly_name }}" 
             sequence:
               - service_template: >
                   {% if is_state('light.hall_lights', 'off') %}
