@@ -4,5 +4,5 @@
       value_template: >
         {% set my_lights = [ states.light.hallway, states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3, states.light.hall_lights ] %}
         {% for l in my_lights | sort(attribute='last_updated', reverse=true) %}
-          {%- if loop.first %}{{ l.entity_id }}{% elif loop.last -%},{{ l.attributes.brightness | default(0) }}{% endif -%}
+          {%- if loop.first %}{{ l.entity_id }},{{ l.attributes.brightness | default(0) }}{% elif loop.last -%}{% endif -%}
         {%- endfor %}
