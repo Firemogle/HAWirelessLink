@@ -19,7 +19,7 @@
           {{ light.hall_lights }}
         {% endif %}
       brightness: >
-        {{ (states('sensor.hall_lights_sync').split(',')).brightness | int }}
+        {{ states('sensor.kitchen_lights_sync').split(',')[1] | int }}
         
     service: light.turn_on
     data_template:
@@ -32,5 +32,5 @@
           {{ light.hallway }}
         {% endif %}
       brightness: >
-        {{ (states('sensor.hall_lights_sync').split(',')).brightness | int }}
+        {{ states('sensor.kitchen_lights_sync').split(',')[1] | int > }}
 
