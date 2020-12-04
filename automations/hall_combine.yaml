@@ -11,26 +11,24 @@
     service: light.turn_on
     data_template:
       entity_id: >
-
-      {% if (states('sensor.hall_lights_sync').split(',') == light.hall_lights ) %}
-        {{ light.hallway }}
-      {% elif (states('sensor.hall_lights_sync').split(',') == light.hallway %}
-        {{ light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3 }}
-      {% else %}
-        {{ light.hall_lights }}
+        {% if (states('sensor.hall_lights_sync').split(',') == light.hall_lights ) %}
+          {{ light.hallway }}
+        {% elif (states('sensor.hall_lights_sync').split(',') == light.hallway %}
+          {{ light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3 }}
+        {% else %}
+          {{ light.hall_lights }}
       brightness: >
         {{ states('sensor.hall_lights_sync').split(',')[1] | int }}
         
     service: light.turn_on
     data_template:
       entity_id: >
-
-      {% if (states('sensor.hall_lights_sync').split(',') == light.hall_lights ) %}
-        {{ light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3 }}
-      {% elif (states('sensor.hall_lights_sync').split(',') == light.hallway %}
-        {{ light.hall_lights }}
-      {% else %}
-        {{ light.hallway }}
+        {% if (states('sensor.hall_lights_sync').split(',') == light.hall_lights ) %}
+          {{ light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3 }}
+        {% elif (states('sensor.hall_lights_sync').split(',') == light.hallway %}
+          {{ light.hall_lights }}
+        {% else %}
+          {{ light.hallway }}
       brightness: >
         {{ states('sensor.hall_lights_sync').split(',')[1] | int }}
 
