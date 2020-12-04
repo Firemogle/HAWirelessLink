@@ -6,35 +6,31 @@
       entity_id: light.hallway
     - platform: state
       entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
-  condition:
-    condition: and
-    conditions:
-      - condition: template
-        value_template: "{{ states('sensor.hall_lights_sync').split(',')[1] | int > 0 }}"
-      - condition: state
-        entity_id: light.hall_lights
-        state: 'on'
-      - condition: state
-        entity_id: light.hallway
-        state: 'on'
-      - condition: state
-        entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
-        state: 'on'
-      - condition: or
-        conditions:
-          - condition: template
-            value_template: "{{ trigger.from_state.attributes.brightness | int | default(0) > 5 + trigger.to_state.attributes.brightness | int | default(0) }}"
-          - condition: template
-            value_template: "{{ trigger.from_state.attributes.brightness | int | default(0) < trigger.to_state.attributes.brightness | int | default(0) }}"
+
   action:
     service: light.turn_on
     data_template:
       entity_id: >
-        {% set entity_id, brightness = states('sensor.hall_lights_sync').split(',') %}
-        {{ entity_id }}
+
+      {% if (states('sensor.hall_lights_sync').split(',') == light.hall_lights ) %}
+        {{ light.hallway }}
+      {% elif (states('sensor.hall_lights_sync').split(',') == light.hallway %}
+        {{ light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3 }}
+      {% else %}
+        {{ light.hall_lights }}
       brightness: >
-        {% set entity_id, brightness = states('sensor.hall_lights_sync').split(',') %}
-        {%- if brightness | int | default(0) < 10 -%}
-        {% set brightness = [states.light.hall_lights.brightness | int | default(0), states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3.brightness | int | default(0), states.light.hallway.brightness | int | default(0)]|max %}
-        {%- endif -%}  
-        {{ brightness | int }}
+        {{ states('sensor.hall_lights_sync').split(',')[1] | int }}
+        
+    service: light.turn_on
+    data_template:
+      entity_id: >
+
+      {% if (states('sensor.hall_lights_sync').split(',') == light.hall_lights ) %}
+        {{ light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3 }}
+      {% elif (states('sensor.hall_lights_sync').split(',') == light.hallway %}
+        {{ light.hall_lights }}
+      {% else %}
+        {{ light.hallway }}
+      brightness: >
+        {{ states('sensor.hall_lights_sync').split(',')[1] | int }}
+
