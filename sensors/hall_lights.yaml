@@ -2,7 +2,7 @@
   sensors:
     hall_lights_sync:
       value_template: >
-        {% set my_lights = [ states.light.hallway, states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3 ] %}
-        {% for l in my_lights | sort(reverse=true, attribute='last_updated') %}
+        {% set my_lights = [ states.light.hallway, states.light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3, states.light.hall_lights ] %}
+        {% for l in my_lights | sort(attribute='last_updated') %}
           {%- if loop.first %}{{ l.entity_id }}{% elif loop.last -%},{{ l.attributes.brightness | default(0) }}{% endif -%}
         {%- endfor %}
