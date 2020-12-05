@@ -8,7 +8,7 @@
       entity_id: light.leviton_dz6hd_1bz_decora_600w_smart_dimmer_level_3
 
   action:
-    service: light.turn_on
+  - service: light.turn_on
     data_template:
       entity_id: >
         {% if states('sensor.hall_lights_sync').split(',') == light.hall_lights  %}
@@ -21,7 +21,7 @@
       brightness: >
         {{ states('sensor.hall_lights_sync').split(',')[1] | int }}
         
-    service: light.turn_on
+  - service: light.turn_on
     data_template:
       entity_id: >
         {% if states('sensor.hall_lights_sync').split(',') == light.hall_lights  %}
